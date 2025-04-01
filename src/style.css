@@ -1,0 +1,109 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.80);
+  background-color: #383838;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  min-width: 400px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  place-items: center;
+  text-align: center;
+}
+
+#app > div {
+  margin: 0px;
+}
+
+.varLine,
+.formulaLine {
+  margin: 5px auto;
+  display: grid;
+  grid-template-columns: 3fr 3fr 1fr 1fr;
+  gap: 5px;
+}
+
+#equationInput {
+  grid-area: 1 / 1 / span 1 / span 3;
+}
+
+#graphInfoContainer {
+  border-top: 3px solid;
+  border-right: 3px solid;
+  border-left: 3px solid;
+  border-color: #141414;
+}
+
+.graphInfo {
+  display: inline;
+}
+
+#graphCanvas {
+  border: 3px solid #141414;
+}
+
+input, button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+}
+
+button {
+  background-color: #141414;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="src/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>eVis2D - a 2D Equation Visualizer</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- Equation Builder -->
+      <!-- TODO: Make this into a collapsible menu -->
+      <div id="formulaBuilder"></div>
+      <!-- Graph Canvas -->
+      <div>
+        <div id="settingsContainer">
+          <button id="settingsToggleBtn">Toggle</button>
+          <table>
+            <tr>
+              <td><label for="custom">Custom Formula <input id="custom" type="radio" name="choice"></label></td>
+              <td><label for="simple">Simple Formula <input id="simple" type="radio" name="choice" checked></label></td>
+            </tr>
+            <tr>
+              <td><label for="lineColor">Line Color</label></td>
+              <td><input id="lineColor" type="color" value="#00BEEF"></td>
+            </tr>
+            <tr>
+              <td><label for="xColor">X-axis Color</label></td>
+              <td><input id="xColor" type="color" value="#660000"></td>
+            </tr>
+            <tr>
+              <td><label for="yColor">Y-axis Color</label></td>
+              <td><input id="yColor" type="color" value="#006600"></td>
+            </tr>
+          </table>
+        </div>
+        <div id="graphInfoContainer">
+          <div class="graphInfo">X</div>
+          <div class="graphInfo">Y</div>
+          <div class="graphInfo"><button>Gear</button></div>
+        </div>
+        <canvas id="graphCanvas"></canvas>
+      </div>
+      <!-- Printed output values -->
+      <div id="output">
+      </div>
+    </div>
+    <script type="module" src="src/script.ts"></script>
+
+  </body>
+</html>
