@@ -1,6 +1,7 @@
 import { addVarline } from './varline';
 import { addFormulaLine } from './formulaline';
 
+//const { baseURL } = import.meta.env;
 const defaultColor: string = "#C0C0C0";
 const canvas = document.getElementById('graphCanvas') as HTMLCanvasElement;
 const ctx = canvas.getContext('2d')! as CanvasRenderingContext2D;
@@ -82,7 +83,7 @@ function graphEquation(equation: string): void {
 
 
 async function fetchLastBuilt() {
-    const response = await fetch('./last_built.txt');
+    const response = await fetch('last_built.txt');
     if (response.ok && response.headers.get("Content-Type") == "text/plain") {
         const text = await response.text();
         pageFooter.innerHTML = text;
