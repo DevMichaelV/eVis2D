@@ -83,7 +83,7 @@ jobs:
 
       - name: Create Timestamp File
         run: |
-          echo "Last built: $(date)" > last_built.txt
+          echo "Last built: $(TZ='America/Chicago' date +'%D, %T')" > last_built.txt
 
       - name: Commit and Push Changes
         run: |

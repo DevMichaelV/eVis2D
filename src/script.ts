@@ -1,5 +1,6 @@
-import { addVarline } from './varline'
-import { addFormulaLine } from './formulaline'
+import { addVarline } from './varline';
+import { addFormulaLine } from './formulaline';
+import textContent from './last_built.txt';
 
 const defaultColor: string = "#C0C0C0";
 const canvas = document.getElementById('graphCanvas') as HTMLCanvasElement;
