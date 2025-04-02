@@ -11,7 +11,7 @@ node_modules
 dist
 dist-ssr
 *.local
-last_built.txt
+timestamp.js
 
 # Editor directories and files
 .vscode/*

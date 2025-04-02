@@ -8,6 +8,7 @@ const ctx = canvas.getContext('2d')! as CanvasRenderingContext2D;
 const formulaBuilder = document.getElementById('formulaBuilder') as HTMLDivElement;
 const pageFooter = document.getElementById('footer') as HTMLElement;
 
+
 // Function to change canvas size
 function resizeCanvas(): void {
     const margin: number = 30;
@@ -81,18 +82,13 @@ function graphEquation(equation: string): void {
     ctx.stroke();
 }
 
-
-async function fetchLastBuilt() {
-    const response = await fetch('last_built.txt');
-    if (response.ok && response.headers.get("Content-Type") == "text/plain") {
-        const text = await response.text();
-        pageFooter.innerHTML = text;
-        return;
-    } else {
-        pageFooter.innerText == "Last build time unknown";
+async function fetchTimestamp() {
+    const buildTime = (await import('./timestamp.ts')).BUILD_TIMESTAMP;
+    if (buildTime) {
+        console.log(buildTime);
+        pageFooter.innerText = buildTime;
     }
 }
-
 
 
 // Add initial Variable line
@@ -109,8 +105,11 @@ graphButton.addEventListener('click', () => {
     graphEquation(equation);
 });
 
+
+
+
 window.onload = () => {
-    fetchLastBuilt();
+    fetchTimestamp();
     resizeCanvas();
     drawAxes();
 }
