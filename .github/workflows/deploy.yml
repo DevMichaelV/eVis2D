@@ -69,26 +69,3 @@ jobs:
           publish_branch: gh-pages
           publish_dir: ./dist
           force_orphan: true
-
-  # Update the timestamp
-  update_timestamp:
-    name: Update last_built.txt
-    needs: deploy
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-        with:
-          ref: gh-pages
-
-      - name: Create Timestamp File
-        run: |
-          echo "Last built: $(TZ='America/Chicago' date +'%D, %T')" > last_built.txt
-
-      - name: Commit and Push Changes
-        run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
-          git add last_built.txt
-          git commit -m "Update last build timestamp"
-          git push

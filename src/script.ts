@@ -1,11 +1,11 @@
 import { addVarline } from './varline';
 import { addFormulaLine } from './formulaline';
-import textContent from './last_built.txt';
 
 const defaultColor: string = "#C0C0C0";
 const canvas = document.getElementById('graphCanvas') as HTMLCanvasElement;
 const ctx = canvas.getContext('2d')! as CanvasRenderingContext2D;
 const formulaBuilder = document.getElementById('formulaBuilder') as HTMLDivElement;
+const pageFooter = document.getElementById('footer') as HTMLElement;
 
 // Function to change canvas size
 function resizeCanvas(): void {
@@ -80,6 +80,20 @@ function graphEquation(equation: string): void {
     ctx.stroke();
 }
 
+
+async function fetchLastBuilt() {
+    const response = await fetch('./last_built.txt');
+    if (response.ok && response.headers.get("Content-Type") == "text/plain") {
+        const text = await response.text();
+        pageFooter.innerHTML = text;
+        return;
+    } else {
+        pageFooter.innerText == "Last build time unknown";
+    }
+}
+
+
+
 // Add initial Variable line
 formulaBuilder.appendChild(addVarline());
 
@@ -94,8 +108,8 @@ graphButton.addEventListener('click', () => {
     graphEquation(equation);
 });
 
-
 window.onload = () => {
+    fetchLastBuilt();
     resizeCanvas();
     drawAxes();
 }
