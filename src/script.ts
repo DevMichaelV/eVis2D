@@ -86,7 +86,7 @@ async function fetchTimestamp() {
     const buildTime = (await import('./timestamp.ts')).BUILD_TIMESTAMP;
     if (buildTime) {
         console.log(buildTime);
-        pageFooter.innerText = buildTime;
+        pageFooter.innerText = "Last built: " + buildTime;
     }
 }
 
@@ -104,8 +104,6 @@ graphButton.addEventListener('click', () => {
     const equation: string = equationInput.value;
     graphEquation(equation);
 });
-
-
 
 
 window.onload = () => {
