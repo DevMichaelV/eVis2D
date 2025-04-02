@@ -72,11 +72,10 @@ jobs:
 
   # Update the timestamp
   update_timestamp:
+    name: Update last_built.txt
+    needs: deploy
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
       - name: Switch to gh-pages
         run: git checkout gh-pages
 
