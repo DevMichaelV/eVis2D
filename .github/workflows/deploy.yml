@@ -76,8 +76,10 @@ jobs:
     needs: deploy
     runs-on: ubuntu-latest
     steps:
-      - name: Switch to gh-pages
-        run: git checkout gh-pages
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
 
       - name: Create Timestamp File
         run: |
