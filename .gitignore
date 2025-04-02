@@ -13,6 +13,7 @@ dist
 dist-ssr
 *.local
 timestamp.ts
+src/timestamp.ts
 
 
 # Editor directories and files
