@@ -35,6 +35,14 @@ jobs:
       - name: Build project
         run: npm run build
 
+      # Add Timestamp
+      - name: Add timestamp
+        run: |
+          echo "$(date)" > timestamp.txt
+          git add timestamp.txt
+          git commit -m "Update timestamp"
+          git push
+
       # Upload the artifact
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v4
