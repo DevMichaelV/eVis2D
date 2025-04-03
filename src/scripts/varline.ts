@@ -8,7 +8,7 @@ export function addVarline(): HTMLDivElement {
     const varValueInput = document.createElement("input") as HTMLInputElement;
     const delvarBtn = document.createElement("button") as HTMLButtonElement;
     const addvarBtn = document.createElement("button") as HTMLButtonElement;
-    
+
     varLine.id = "vLine-" + id;
     varLine.classList.add("grid-container", "varLine");
     console.log("Adding", varLine.id)
@@ -17,17 +17,17 @@ export function addVarline(): HTMLDivElement {
     varNameInput.type = "text";
     varNameInput.placeholder = "varName";
     varNameInput.required = true;
-    
+
     varValueInput.setAttribute("data-value", id);
     varValueInput.type = "number";
     varValueInput.placeholder = "varValue";
     varValueInput.required = true;
-    
+
     delvarBtn.appendChild(fontIcons.plugMinus.node[0]);
     delvarBtn.title = "Remove variable";
     delvarBtn.className = "delVarBtn";
     delvarBtn.onclick = () => { removeVarline(varLine) };
-    
+
     addvarBtn.appendChild(fontIcons.plugPlus.node[0]);
     addvarBtn.title = "Add new variable";
     addvarBtn.className = "addVarBtn";

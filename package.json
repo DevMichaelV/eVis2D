@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "prebuild": "node generateTimestamp.js",
+    "prebuild": "node ./src/scripts/generateTimestamp.js",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
