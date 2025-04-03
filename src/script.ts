@@ -1,13 +1,15 @@
 import { addVarline } from './varline';
-import { addFormulaLine } from './formulaline';
+import { fontIcons } from './icons';
 
 //const { baseURL } = import.meta.env;
 const defaultColor: string = "#C0C0C0";
 const canvas = document.getElementById('graphCanvas') as HTMLCanvasElement;
 const ctx = canvas.getContext('2d')! as CanvasRenderingContext2D;
-const formulaBuilder = document.getElementById('formulaBuilder') as HTMLDivElement;
+//const expressionBuilder = document.getElementById('expressionBuilder') as HTMLDivElement;
+const customVars = document.getElementById("customVars") as HTMLDivElement;
+const graphBtn = document.getElementById('graphBtn') as HTMLButtonElement;
+const graphSettingsBtn = document.getElementById('graphSettingsBtn') as HTMLButtonElement;
 const pageFooter = document.getElementById('footer') as HTMLElement;
-
 
 // Function to change canvas size
 function resizeCanvas(): void {
@@ -42,6 +44,7 @@ function drawAxes(): void {
     ctx.stroke();
 }
 
+// Function to find all the custom variables
 function getVars() {
     const varLines: NodeListOf<Element> = document.querySelectorAll(".varLine");
     const vars: { [key: string]: number } = {};
@@ -82,6 +85,7 @@ function graphEquation(equation: string): void {
     ctx.stroke();
 }
 
+// Function to retrieve and embed the build timestamp
 async function fetchTimestamp() {
     const buildTime = (await import('./timestamp.ts')).BUILD_TIMESTAMP;
     if (buildTime) {
@@ -92,21 +96,19 @@ async function fetchTimestamp() {
 
 
 // Add initial Variable line
-formulaBuilder.appendChild(addVarline());
+customVars.appendChild(addVarline());
 
-// Add the Formula Line
-formulaBuilder.appendChild(addFormulaLine());
 
 // Add an event listener to the "Graph" button
-const equationInput = document.getElementById('equationInput') as HTMLInputElement;
-const graphButton = document.getElementById('graphButton') as HTMLButtonElement;
-graphButton.addEventListener('click', () => {
-    const equation: string = equationInput.value;
+const expressionInput = document.getElementById('expressionInput') as HTMLInputElement;
+graphBtn.addEventListener('click', () => {
+    const equation: string = expressionInput.value;
     graphEquation(equation);
 });
 
 
 window.onload = () => {
+    graphSettingsBtn.appendChild(fontIcons.gear.node[0]);
     fetchTimestamp();
     resizeCanvas();
     drawAxes();

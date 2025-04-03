@@ -1,51 +1,78 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <link rel="stylesheet" href="src/style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>eVis2D - a 2D Equation Visualizer</title>
+    <title>eVis2D - a 2D Expression Visualizer</title>
   </head>
   <body>
+    <!-- Begin App -->
     <div id="app">
-      <!-- Equation Builder -->
-      <!-- TODO: Make this into a collapsible menu -->
-      <div id="formulaBuilder"></div>
-      <!-- Graph Canvas -->
-      <div>
-        <div id="settingsContainer">
-          <button id="settingsToggleBtn">Toggle</button>
-          <table>
-            <tr>
-              <td><label for="custom">Custom Formula <input id="custom" type="radio" name="choice"></label></td>
-              <td><label for="simple">Simple Formula <input id="simple" type="radio" name="choice" checked></label></td>
-            </tr>
-            <tr>
-              <td><label for="lineColor">Line Color</label></td>
-              <td><input id="lineColor" type="color" value="#00BEEF"></td>
-            </tr>
-            <tr>
-              <td><label for="xColor">X-axis Color</label></td>
-              <td><input id="xColor" type="color" value="#660000"></td>
-            </tr>
-            <tr>
-              <td><label for="yColor">Y-axis Color</label></td>
-              <td><input id="yColor" type="color" value="#006600"></td>
-            </tr>
-          </table>
+      <!-- Expression Builder -->
+      <section id="expressionBuilder">
+        <h4>Expression Builder</h4>
+        <div id="customVarsContainer">
+          <button id="customVarsBtn">Vars</button>
+          <div id="customVars"></div>
         </div>
-        <div id="graphInfoContainer">
-          <div class="graphInfo">X</div>
-          <div class="graphInfo">Y</div>
-          <div class="graphInfo"><button>Gear</button></div>
+        <div id="expressionBar" class="grid-container">
+          <input
+            id="expressionInput"
+            type="text"
+            value="x**3"
+            placeholder="e.g., x**3, x*x, 2*x**2 + 2*x + 3"
+          />
+          <button id="graphBtn">Graph</button>
         </div>
-        <canvas id="graphCanvas"></canvas>
-      </div>
+      </section>
+
+      <!-- Graph Container -->
+      <section>
+        <h4>Graph</h4>
+        <div id="graphContainer">
+          <div id="graphInfoContainer" class="grid-container">
+            <span id="mouseX">X</span>
+            <span id="mouseY">Y</span>
+            <div id="graphSettingsContainer">
+              <button id="graphSettingsBtn" title="Graph Settings"></button>
+              <table id="graphSettings">
+                <tr>
+                  <th colspan="2">Colors</th>
+                </tr>
+                <tr>
+                  <td><label for="lineColor">Drawing</label></td>
+                  <td>
+                    <input id="lineColor" type="color" value="#00BEEF" />
+                  </td>
+                </tr>
+                <tr>
+                  <td><label for="xColor">X-axis</label></td>
+                  <td><input id="xColor" type="color" value="#660000" /></td>
+                </tr>
+                <tr>
+                  <td><label for="yColor">Y-axis</label></td>
+                  <td><input id="yColor" type="color" value="#006600" /></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <!-- Graph Canvas -->
+          <canvas id="graphCanvas"></canvas>
+        </div>
+      </section>
+
       <!-- Printed output values -->
-      <div id="output">
-      </div>
+      <section id="output">
+        <h4>Output Values</h4>
+        <table id="outputValues"></table>
+      </section>
+
+      <!-- End App -->
     </div>
+
+    <!-- Page Footer -->
     <footer id="footer"></footer>
     <script type="module" src="src/script.ts"></script>
   </body>

@@ -1,4 +1,5 @@
-import { nanoid } from 'nanoid'
+import { nanoid } from 'nanoid';
+import { fontIcons } from './icons';
 
 export function addVarline(): HTMLDivElement {
     const id = String(nanoid(10)) as string;
@@ -9,7 +10,7 @@ export function addVarline(): HTMLDivElement {
     const addvarBtn = document.createElement("button") as HTMLButtonElement;
     
     varLine.id = "vLine-" + id;
-    varLine.className = "varLine";
+    varLine.classList.add("grid-container", "varLine");
     console.log("Adding", varLine.id)
 
     varNameInput.setAttribute("data-name", id);
@@ -22,12 +23,12 @@ export function addVarline(): HTMLDivElement {
     varValueInput.placeholder = "varValue";
     varValueInput.required = true;
     
-    delvarBtn.innerText = "x";
+    delvarBtn.appendChild(fontIcons.plugMinus.node[0]);
     delvarBtn.title = "Remove variable";
     delvarBtn.className = "delVarBtn";
     delvarBtn.onclick = () => { removeVarline(varLine) };
     
-    addvarBtn.innerText = "+";
+    addvarBtn.appendChild(fontIcons.plugPlus.node[0]);
     addvarBtn.title = "Add new variable";
     addvarBtn.className = "addVarBtn";
     addvarBtn.onclick = () => {
