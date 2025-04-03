@@ -63,7 +63,7 @@ export function resizeCanvas(): void {
 }
 
 // Function to find all the custom variables
-function getVars() {
+export function getVars() {
     const varLines: NodeListOf<Element> = document.querySelectorAll(".varLine");
     const vars: { [key: string]: number } = {};
 
@@ -75,4 +75,5 @@ function getVars() {
         vars[name] = value;
     });
     console.log(vars);
+    return vars;
 }

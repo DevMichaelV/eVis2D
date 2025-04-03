@@ -14,11 +14,13 @@ export function addVarline(): HTMLDivElement {
     console.log("Adding", varLine.id)
 
     varNameInput.setAttribute("data-name", id);
+    varNameInput.name = "vName-" + id;
     varNameInput.type = "text";
     varNameInput.placeholder = "varName";
     varNameInput.required = true;
 
     varValueInput.setAttribute("data-value", id);
+    varValueInput.name = "vVal-" + id;
     varValueInput.type = "number";
     varValueInput.placeholder = "varValue";
     varValueInput.required = true;
@@ -34,7 +36,7 @@ export function addVarline(): HTMLDivElement {
     addvarBtn.onclick = () => {
         const parent = document.getElementById(varLine.id) as HTMLElement;
         // Add the new varLine right after this varLine
-        if (parent && parent.className === "varLine") {
+        if (parent && parent.classList.contains("varLine")) {
             parent.parentElement?.insertBefore(addVarline(), parent.nextSibling)
         }
     };
